@@ -1,9 +1,12 @@
 
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:flutter/material.dart';
 import './post/tweets.dart';
 import './post/posttemp.dart';
+import './botnav/botnavig.dart';
 
 Tweets tweets = Tweets();
 class HomePage extends StatefulWidget{
@@ -31,19 +34,25 @@ class Homepage extends State<HomePage> {
 
           ),
 
-    body:  ListView.separated(
-              itemBuilder: (context, index) {
-                return buildTweets(context,tweets,index);
-              },
-              separatorBuilder: (context, index) {
-                return Divider(
-                  height: 5.0,
-                );
-              },
-              itemCount: tweets.tweets.length),
-        ),
-        
+    body:  Padding(
+      padding: const EdgeInsets.fromLTRB(0,0,0,0),
+      child: ListView.separated(
+                itemBuilder: (context, index) {
+                  return buildTweets(context,tweets,index);
+                },
+                separatorBuilder: (context, index) {
+                  return Divider(
+                    height: 5.0,
+                  );
+                },
+                itemCount: tweets.tweets.length),
+    ),
 
+     bottomNavigationBar: botnav(context)
+        ),
+    
+  
+    
     );
   }
 }

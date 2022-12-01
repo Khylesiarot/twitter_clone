@@ -9,6 +9,7 @@ class Tweets {
       100,
       20,
       50,
+      '1m'
     ),
     Tweet(
       'https://pbs.twimg.com/profile_images/1187814172307800064/MhnwJbxw_400x400.jpg',
@@ -19,6 +20,7 @@ class Tweets {
       100,
       20,
       50,
+      '10m'
     ),
     Tweet(
       'https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png',
@@ -29,6 +31,7 @@ class Tweets {
       60,
       78,
       20,
+      '5h'
     ),
     Tweet(
       'https://pbs.twimg.com/profile_images/1187814172307800064/MhnwJbxw_400x400.jpg',
@@ -39,6 +42,7 @@ class Tweets {
       9,
       20,
       50,
+      '21h'
     ),
     Tweet(
       'https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png',
@@ -49,6 +53,7 @@ class Tweets {
       100,
       20,
       50,
+      '1d'
     ),
     Tweet(
       'https://pbs.twimg.com/profile_images/1187814172307800064/MhnwJbxw_400x400.jpg',
@@ -59,6 +64,7 @@ class Tweets {
       100,
       20,
       50,
+      '1d'
     ),
   ];
 
@@ -68,7 +74,7 @@ class Tweets {
 }
 
 class Tweet {
-  String _userThumb, _userName, _userMName, _tweetText, _tweetImage;
+  String _userThumb, _userName, _userMName, _tweetText, _tweetImage , _timet;
   int _retweetCount, _commentCount, _loveCount;
 
   /*_Tweet(this._userThumb, this._userName, this._userMName, this._tweetText,
@@ -83,7 +89,10 @@ class Tweet {
       this._tweetImage,
       this._retweetCount,
       this._commentCount,
-      this._loveCount);
+      this._loveCount,
+      this._timet);
+
+  get timeT => _timet;
 
   get loveCount => _loveCount;
 

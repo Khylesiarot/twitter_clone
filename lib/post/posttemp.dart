@@ -43,7 +43,7 @@ import 'package:twitter_clone/post/tweets.dart';
                         Padding(
                           padding: const EdgeInsets.only(left: 5.0),
                           child: Text(
-                            tweets.tweets[index].userMName,
+                            tweets.tweets[index].userMName + " • " + tweets.tweets[index].timeT,
                             style: const TextStyle(
                               fontSize: 16.0,
                             ),
