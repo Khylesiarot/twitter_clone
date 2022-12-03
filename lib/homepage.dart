@@ -10,6 +10,8 @@ import './botnav/botnavig.dart';
 
 Tweets tweets = Tweets();
 class HomePage extends StatefulWidget{
+ static const routename = './homepage/';
+
   const HomePage({super.key});
 
   
@@ -19,8 +21,27 @@ class HomePage extends StatefulWidget{
 
 }
 
-class Homepage extends State<HomePage> {
+
+
+
+class Homepage extends State<HomePage> with TickerProviderStateMixin {
   String src = "https://cdn-icons-png.flaticon.com/512/733/733579.png";
+  int _currIndex= 0;
+  void _nextIndex(int val) {
+    setState(() {
+      _currIndex = val;
+    });
+  }
+ late TabController tabController;
+
+ @override
+  void initState() {
+    super.initState();
+    tabController = TabController(initialIndex: 0, length: 5, vsync: this);
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -48,7 +69,7 @@ class Homepage extends State<HomePage> {
                 itemCount: tweets.tweets.length),
     ),
 
-     bottomNavigationBar: botnav(context)
+     bottomNavigationBar: botnav(context, _nextIndex, tabController)
         ),
     
   
