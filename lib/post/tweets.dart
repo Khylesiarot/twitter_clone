@@ -61,14 +61,14 @@ class Tweets {
       ''
     ),
     Tweet(
-      'https://pbs.twimg.com/profile_images/1187814172307800064/MhnwJbxw_400x400.jpg',
-      'Flutter Dev',
-      '@flutter.dev',
-      'Hello Flutter Developers \nWelcome to the awesomeness, \nCheck \nThis \nOut',
-      'https://pbs.twimg.com/profile_images/1187814172307800064/MhnwJbxw_400x400.jpg',
-      100,
-      20,
-      50,
+      'https://cdn.dribbble.com/users/2364329/screenshots/5930135/aa.jpg',
+      'Captain America',
+      '@itsMeKotsTroi',
+      'Fly high!',
+      'https://scontent.xx.fbcdn.net/v/t1.15752-9/117793473_1655805744628130_2627384093253297662_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=aee45a&_nc_eui2=AeHYhT6bVk0LHo-wevf4vW7cIijNtOBe6agiKM204F7pqOlbUOixdN_eDJM0DzpYu6lZ6ABlMmZHcWEUxxOFYxRX&_nc_ohc=g7suAib_IoIAX9Hl9vE&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdR4iVAWoYFFRGKwplvnx6T0azLtvBLdLAMG0-WtUPwN8A&oe=63B3FBEB',
+      1000,
+      2000,
+      5000,
       '1d',
       'Flutter Gaming'
     ),
