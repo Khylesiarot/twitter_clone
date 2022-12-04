@@ -14,44 +14,61 @@ class HomeScreen extends StatefulWidget {
   Homescreen createState() => Homescreen(tweets);
 }
 
+int? value;
+
 class Homescreen extends State<HomeScreen> {
   Homescreen(Tweets tweets);
 
+  remove (int value){
+    setState(() {
+      tweets.tweets.removeAt(value);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
+         backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.white,
           leading: IconButton(
-            onPressed: () => {},
-            icon: Icon(
-              Icons.account_circle_outlined,
-              color: Colors.black,
-              size: 25,
-            ),
-          ),
-          title: FaIcon(
+             icon: const Icon(
+               Icons.account_circle_outlined,
+               color: Colors.black,
+               size: 25,
+           ), onPressed: (){  if(scaffoldKey.currentState!.isDrawerOpen){
+                       scaffoldKey.currentState!.closeDrawer();
+                       //close drawer, if drawer is open
+                  }else{
+                       scaffoldKey.currentState!.openDrawer();
+                       //open drawer, if drawer is closed
+                  }},
+           ),
+          title: const FaIcon(
             FontAwesomeIcons.twitter,
             color: Colors.blue,
           ),
           actions: [
             IconButton(
               onPressed: () => {},
-              icon: FaIcon(FontAwesomeIcons.bolt),
+              icon: const FaIcon(FontAwesomeIcons.bolt),
               iconSize: 20,
               color: Colors.black,
             )
           ],
         ),
+       
+         
         body: Padding(
           padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
           child: ListView.separated(
               itemBuilder: (context, index) {
-                return buildTweets(context, tweets, index);
+                return buildTweets(context, tweets, index,remove);
               },
               separatorBuilder: (context, index) {
-                return Divider(
+                return const Divider(
                   height: 5.0,
                 );
               },

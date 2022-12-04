@@ -17,7 +17,7 @@ Widget botnav(BuildContext context, TabController tabController) {
               indicatorColor: Colors.blue,
               controller: tabController,
               indicator: const UnderlineTabIndicator(
-                insets: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 0.0),
+                insets: EdgeInsets.fromLTRB(2.0, 0.0, 2.0, 0.0),
                 borderSide:
                     BorderSide(color: Colors.blue, width: 3)),
                      
@@ -26,7 +26,7 @@ Widget botnav(BuildContext context, TabController tabController) {
                Tab(icon: Icon(FontAwesomeIcons.house, size: 25)),
             Tab(
               icon: Icon(
-                Icons.search,
+                FontAwesomeIcons.magnifyingGlass,
                 size: 25,
 
               ),
