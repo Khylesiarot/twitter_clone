@@ -5,7 +5,24 @@ import 'package:twitter_clone/post/tweets.dart';
 
 
 
-  Widget buildTweets(BuildContext context, Tweets tweets, int index) {
+
+
+  Widget buildTweets(BuildContext context, Tweets tweets, int index, Function remove) {
+
+    topicicon (){
+      return  const Material(color: Colors.white,
+        child: Padding(
+              padding:  EdgeInsets.fromLTRB(50,0,0,5),
+              child: Icon(Icons.comment_rounded, size: 12,)));
+    }
+    topic(){
+        return Padding(
+          padding: const EdgeInsets.fromLTRB(0,0,0,5),
+          child: Text(tweets.tweets[index].topic, style: const TextStyle(fontSize: 14.0, color: Color.fromARGB(255, 46, 45, 45), fontWeight: FontWeight.bold,),),
+        );
+
+    }
+
     
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -13,17 +30,27 @@ import 'package:twitter_clone/post/tweets.dart';
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Container(
-              width: 40,
-              height: 40,
+            Column(
+              
+              children: [
+                 tweets.tweets[index].topic != '' ?  
+                  topicicon(): const SizedBox(height: 0.0),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB( 1.5,5,0,0),
+                  child: Container(
+              width: 50,
+              height: 50,
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
-                child: Image.network(
-                  tweets.tweets[index].userThumb,
-                  height: 40,
-                  fit: BoxFit.fill,
-                ),
+                  borderRadius: BorderRadius.circular(25.0),
+                  child: Image.network(
+                    tweets.tweets[index].userThumb,
+                    height: 50,
+                    fit: BoxFit.fill,
+                  ),
               ),
+            ),
+                ),
+              ],
             ),
             Expanded(
               child: Padding(
@@ -31,6 +58,10 @@ import 'package:twitter_clone/post/tweets.dart';
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
+                    
+                    tweets.tweets[index].topic != '' ? topic(): const SizedBox(height: 0,),
+
+
                     Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -40,7 +71,7 @@ import 'package:twitter_clone/post/tweets.dart';
                           style: const TextStyle(
                               fontSize: 16.0, fontWeight: FontWeight.bold),
                         ),
-                        Padding(
+                        tweets.tweets[index].userMName != '' ? Padding(
                           padding: const EdgeInsets.only(left: 5.0),
                           child: Text(
                             tweets.tweets[index].userMName + " • " + tweets.tweets[index].timeT,
@@ -48,7 +79,7 @@ import 'package:twitter_clone/post/tweets.dart';
                               fontSize: 16.0,
                             ),
                           ),
-                        )
+                        ): SizedBox(height: 0,),
                       ],
                     ),
                     Padding(
@@ -73,13 +104,13 @@ import 'package:twitter_clone/post/tweets.dart';
                         : const SizedBox(height: 0.0),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 0.0),
+                          vertical: 5.0, horizontal: 0.0),
                       child: Row(
                         children: <Widget>[
                           Expanded(
                             child: Row(
                               children: <Widget>[
-                                FaIcon(FontAwesomeIcons.heart, size: 20,),
+                                const FaIcon(FontAwesomeIcons.comment, size: 20,),
 
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5.0),
@@ -92,7 +123,7 @@ import 'package:twitter_clone/post/tweets.dart';
                           Expanded(
                             child: Row(
                               children: <Widget>[
-                                FaIcon(FontAwesomeIcons.retweet, size: 20,),
+                                const FaIcon(FontAwesomeIcons.retweet, size: 20,),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5.0),
                                   child: Text(tweets.tweets[index].retweetCount
@@ -104,7 +135,7 @@ import 'package:twitter_clone/post/tweets.dart';
                           Expanded(
                             child: Row(
                               children: <Widget>[
-                                 FaIcon(FontAwesomeIcons.comment, size: 20,),
+                                 const FaIcon(FontAwesomeIcons.heart, size: 20,),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 5.0),
                                   child: Text(tweets.tweets[index].loveCount
@@ -113,23 +144,50 @@ import 'package:twitter_clone/post/tweets.dart';
                               ],
                             ),
                           ),
-                          const Expanded(
-                            child: Icon(
+                           Expanded(
+                            child:  Row(
+                              children: <Widget>[
+                               const Icon(
                               Icons.share,
                               color: Colors.grey,
                               size: 20.0,
                             ),
-                          )
+                              ],
+                            )
+                          ),
+
                         ],
                       ),
                     ),
                   ],
                 ),
               ),
-            )
+            ),
+             Column( mainAxisAlignment: MainAxisAlignment.start,
+             crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+
+                              tweets.tweets[index].topic != '' ? GestureDetector(child: const Icon(Icons.close, size: 14), onTap: () => {
+                              remove(index)
+                              },): const SizedBox(height: 0,),
+
+                              tweets.tweets[index].topic != '' ? const Padding(
+                                padding: EdgeInsets.fromLTRB(0,7,0,0),
+                                child: Icon(Icons.more_vert_rounded, size: 15),
+                              ): const Padding(
+                                padding: EdgeInsets.symmetric(vertical: 2.0),
+                                child: Icon(Icons.more_vert, size: 15),
+                              )
+
+                               
+                            ],
+                          )
+
+            
           ],
         ),
       ),
     );
   }
+
 
