@@ -2,12 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:twitter_clone/Screens/Widgets/drawerslide.dart';
+import 'package:twitter_clone/accounts/useracc.dart';
 import './post/tweets.dart';
 import './botnav/botnavig.dart';
 import 'Screens/homescreen.dart';
 import 'Screens/searchscreen.dart';
 
  final scaffoldKey = GlobalKey<ScaffoldState>();
+
+ Useracc user = Useracc();
 
 Tweets tweets = Tweets();
 class HomePage extends StatefulWidget{
@@ -47,7 +50,7 @@ class Homepage extends State<HomePage> with TickerProviderStateMixin {
     return Scaffold(
       backgroundColor: Colors.white,
       key: scaffoldKey,
-          drawer: DrawerS(),
+          drawer: DrawerS(user),
       
      body: TabBarView (controller: tabController,children: [
          HomeScreen(tweets),
