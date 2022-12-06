@@ -53,7 +53,7 @@ class Homepage extends State<HomePage> with TickerProviderStateMixin {
           drawer: DrawerS(user),
       
      body: TabBarView (controller: tabController,children: [
-         HomeScreen(tweets),
+         HomeScreen(tweets,user),
           SearchScreen(),
      ],),
 

@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:twitter_clone/homepage.dart';
+import '../accounts/useracc.dart';
 import '../post/posttemp.dart';
 import '../post/tweets.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen(Tweets tweets, {super.key});
+  const HomeScreen(Tweets tweets,Useracc user, {super.key});
 
   int? get index => null;
 
   @override
   // ignore: no_logic_in_create_state
-  Homescreen createState() => Homescreen(tweets);
+  Homescreen createState() => Homescreen(tweets,user);
 }
 
 int? value;
 
 class Homescreen extends State<HomeScreen> {
-  Homescreen(Tweets tweets);
+  Homescreen(Tweets tweets ,Useracc user);
 
   remove (int value){
     setState(() {
@@ -33,12 +34,17 @@ class Homescreen extends State<HomeScreen> {
         appBar: AppBar(
           centerTitle: true,
           backgroundColor: Colors.white,
-          leading: IconButton(
-             icon: const Icon(
-               Icons.account_circle_outlined,
-               color: Colors.black,
-               size: 25,
-           ), onPressed: (){  if(scaffoldKey.currentState!.isDrawerOpen){
+          leading:  MaterialButton(
+            
+             child: ClipRRect(
+                  borderRadius: BorderRadius.circular(45.0),
+                  child: Image.network(
+                    user.user[0].userThumb,
+                    width: 35,
+                    height: 35,
+                    fit: BoxFit.cover,
+                  )),
+             onPressed: (){  if(scaffoldKey.currentState!.isDrawerOpen){
                        scaffoldKey.currentState!.closeDrawer();
                        //close drawer, if drawer is open
                   }else{
