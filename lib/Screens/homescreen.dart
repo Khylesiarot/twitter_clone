@@ -74,8 +74,9 @@ class Homescreen extends State<HomeScreen> {
                 return buildTweets(context, tweets, index,remove);
               },
               separatorBuilder: (context, index) {
-                return const Divider(
-                  height: 5.0,
+                return  Container(
+                  height: 1,
+                  color: Colors.grey.shade200,
                 );
               },
               itemCount: tweets.tweets.length),

@@ -10,16 +10,14 @@ Widget botnav(BuildContext context, TabController tabController) {
             topLeft: Radius.circular(15), topRight: Radius.circular(15)),
         child: TabBar(
          
-              labelColor: Colors.blue,
-              unselectedLabelColor: Colors.blue,
+              labelColor: Colors.black,
+              unselectedLabelColor: Color.fromARGB(221, 29, 28, 28),
+            
               isScrollable: false,
               indicatorSize: TabBarIndicatorSize.tab,
-              indicatorColor: Colors.blue,
+              indicatorColor: Colors.transparent,
               controller: tabController,
-              indicator: const UnderlineTabIndicator(
-                insets: EdgeInsets.fromLTRB(2.0, 0.0, 2.0, 0.0),
-                borderSide:
-                    BorderSide(color: Colors.blue, width: 3)),
+              
                      
                     
               tabs: const [

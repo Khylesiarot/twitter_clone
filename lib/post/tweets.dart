@@ -22,7 +22,7 @@ class Tweets {
       20,
       50,
       '10m',
-      'Jaguar Esports'
+      ''
     ),
     Tweet(
       'https://cdn.iconscout.com/icon/free/png-512/react-1-282599.png',
@@ -46,7 +46,7 @@ class Tweets {
       20,
       50,
       '21h',
-      'Flutter Gaming'
+      ''
     ),
     Tweet(
       'https://th.bing.com/th/id/OIP.SBHs_e9MF0ZtgSn6MbwwtgHaMA?pid=ImgDet&rs=1',
@@ -70,7 +70,7 @@ class Tweets {
       2000,
       5000,
       '1d',
-      'Flutter Gaming'
+      ''
     ),
   ];
 
