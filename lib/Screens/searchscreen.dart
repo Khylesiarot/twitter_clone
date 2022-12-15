@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:twitter_clone/Screens/searchacc.dart';
 import 'package:twitter_clone/Screens/searchscreens/entertainment.dart';
 import 'package:twitter_clone/Screens/searchscreens/foryou.dart';
 import 'package:twitter_clone/Screens/searchscreens/news.dart';
@@ -28,14 +29,14 @@ class _SearchScreen extends State<SearchScreen> with TickerProviderStateMixin{
  late TabController tabControllerS;
    final scaffoldKeya = GlobalKey<ScaffoldState>();
    TextEditingController txtcntrl = TextEditingController();
-  late String text;
+  
 
 
  @override
   void initState() {
     super.initState();
     tabControllerS = TabController(initialIndex: 0, length: 5, vsync: this);
-    text = txtcntrl.text;
+  
   }
   
 
@@ -49,7 +50,7 @@ class _SearchScreen extends State<SearchScreen> with TickerProviderStateMixin{
       appBar:  AppBar(
           centerTitle: true,
           backgroundColor: Colors.white,
-          leading:  text == '' ?  MaterialButton(
+          leading: MaterialButton(
             
              child: ClipRRect(
                   borderRadius: BorderRadius.circular(45.0),
@@ -66,51 +67,44 @@ class _SearchScreen extends State<SearchScreen> with TickerProviderStateMixin{
                        scaffoldKey.currentState!.openDrawer();
                        //open drawer, if drawer is closed
                   }},
-           ) : Icon(Icons.arrow_back, color: Colors.black,),
+           ),
           title: Padding(
             padding: const EdgeInsets.symmetric(vertical: 10.0),
-            child: SizedBox(
-              height: 30,
-              child: GestureDetector(
-                child: TextField(
-                        controller: txtcntrl,
-                        onTap: () {
-                          setState(() {
-                            text = txtcntrl.text;
-                          });
-                        },
-                      decoration: InputDecoration(
-                        
-                        filled: true,
-                
-                    fillColor: text != '' ? Colors.white: Colors.grey.shade200,
-                     border: myinputborder(),
-                        enabledBorder: myinputborder(),
-                        focusedBorder: myfocusborder(),
-                    
-                    hintText: 'Search Twitter',
-                    hintStyle: TextStyle(fontSize: 15,),
-                    
-  
-
-                  contentPadding: EdgeInsets.fromLTRB(10, 0, 0, 0) 
-                  ),
-                 
-                  textAlign: TextAlign.left,
-                  
+            child: GestureDetector(
+              child: Container(
+                width: 250,
+                height: 30,
+                      
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                         color: Colors.grey.shade200,
+                         border: Border.all(
+                          color: Colors.grey.shade300,
+                          width: 1),
+                         
                       ),
-              ),
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(10,6,0,0),
+                  child: Text('Seach Something', style: TextStyle( fontSize: 14, color: Colors.grey.shade600), textAlign: TextAlign.left,),
+                ),
+              
+                    ),
+                    onTap: () {
+                        Navigator.of(context).push(
+                       MaterialPageRoute(builder: (context) => Search()));
+                      
+                    }
             ),
           ),
 
 
           actions: [
-           text != '' ? IconButton( 
+            IconButton( 
               onPressed: () => {},
               icon: const FaIcon(FontAwesomeIcons.cog),
               iconSize: 20,
               color: Colors.black,
-            ): SizedBox(height: 0,),
+            )
           ],
 
           bottom: TabBar(
